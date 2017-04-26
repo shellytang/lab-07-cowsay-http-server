@@ -25,7 +25,6 @@ const server = module.exports = http.createServer(function(req, res) {
         if(err) console.error(err);
         let message = cowsay.say({text: req.body.text});
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        console.log(typeof req.body.text);
         res.write(message);
         res.end();
       });
