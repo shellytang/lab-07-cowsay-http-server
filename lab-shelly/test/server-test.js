@@ -17,70 +17,34 @@ describe('Server module', function() {
     describe('/ endpoint with invalid pathway', function() {
       it('should respond with a status code 400 on bad request', done => {
         chai.request(server) //mocks request to server
-        .post('/monkeysay')
+        .post('/lalala')
         .send({})
         .end((err, res) => {
           expect(res).to.have.status(400);
+          done();
         });
-        done();
       });
     });
     describe('/ endpoint', function() {
       it('should respond with a status code 200', done => {
         chai.request(server)
-        .post('/')
-        .send({})
+        .post('/cowsay')
+        .send({text: 'hi'})
         .end((err, res) => {
-          expect(res).to.have.status(300);
+          expect(res).to.have.status(200);
+          done();
         });
-        done();
-      });
-      it('should respond with Content-Type: text/plain', done => {
-        chai.request(server)
-        .post('/')
-        .send({})
-        .end((err, res) => {
-          expect(res).to.have.header('Content-Type', 'text-plain');
-        });
-        done();
-      });
-      it('should respond with hello world', done => {
-        chai.request(server)
-        .post('/')
-        .send({})
-        .end((err, res) => {
-          expect(res.body).to.equal('hello world!');
-        });
-        done();
       });
     });
     describe('/cowsay endpoint', function() {
       it('should respond with a status code 200', done => {
         chai.request(server)
-        .post('/')
-        .send({})
+        .post('/cowsay')
+        .send({text: 'hi'})
         .end((err, res) => {
-          expect(res).to.have.status(300);
+          expect(res).to.have.status(200);
+          done();
         });
-        done();
-      });
-      it('should respond with Content-Type: text/plain', done => {
-        chai.request(server)
-        .post('/')
-        .send({})
-        .end((err, res) => {
-          expect(res).to.have.header('Content-Type', 'text-plain');
-        });
-        done();
-      });
-      it('should respond with the user input', done => {
-        chai.request(server)
-        .post('/')
-        .send({})
-        .end((err, res) => {
-          expect(res).to.be.json;
-        });
-        done();
       });
     });
   });
@@ -90,12 +54,12 @@ describe('Server module', function() {
     describe('/ endpoint with bad filepath', function() {
       it('should respond with a 400 on bad request', done => {
         chai.request(server)
-        .get('/monkeysay')
+        .get('/cowsay')
         .send({})
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          done();
         });
-        done();
       });
     });
     describe('/ endpoint', function() {
@@ -106,30 +70,21 @@ describe('Server module', function() {
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res.status).to.equal(200);
+          done();
         });
-        done();
       });
     });
 
     describe('/cowsay endpoint', function() {
       it('should respond with a 200 on proper request', done => {
         chai.request(server)
-        .get('/cowsay')
+        .get('/cowsay?text=message')
         .send({})
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res.status).to.equal(200);
+          done();
         });
-        done();
-      });
-      it('should respond with Content-Type: text/plain', done => {
-        chai.request(server)
-        .get('/cowsay')
-        .send({})
-        .end((err, res) => {
-          expect(res).to.have.header('Content-Type', 'text-plain');
-        });
-        done();
       });
       it('should respond with the user inputed query string', done => {
         chai.request(server)
@@ -138,8 +93,8 @@ describe('Server module', function() {
         .end((err, res) => {
           expect(res).to.be.string;
           expect(err).to.be.null;
+          done();
         });
-        done();
       });
     });
   });
