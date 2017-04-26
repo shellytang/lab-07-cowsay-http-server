@@ -9,11 +9,6 @@ const PORT = process.env.PORT || 3000;
 
 const server = module.exports = http.createServer(function(req, res) {
 
-  // console.log('req url: ', req.url);
-  // console.log('req method: ', req.method);
-  // console.log('req headers: ', req.headers);
-  // console.log('req url qs: ', req.url.query);
-
   req.url = url.parse(req.url);
   req.url.query = queryString.parse(req.url.query);
 
@@ -41,7 +36,6 @@ const server = module.exports = http.createServer(function(req, res) {
       res.end();
     }
   }
-
   if(req.method === 'GET') {
     if(req.url.pathname === '/cowsay' && req.url.query.text) {
       res.writeHead(200,{'Content-Type': 'text/plain'});
@@ -57,8 +51,6 @@ const server = module.exports = http.createServer(function(req, res) {
       res.end();
     }
   }
-
-
 });
 
 server.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
