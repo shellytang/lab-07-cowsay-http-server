@@ -31,7 +31,7 @@ describe('Server module', function() {
         .post('/')
         .send({})
         .end((err, res) => {
-          expect(res).to.have.status(300);
+          expect(res).to.have.status(200);
         });
         done();
       });
@@ -60,7 +60,7 @@ describe('Server module', function() {
         .post('/')
         .send({})
         .end((err, res) => {
-          expect(res).to.have.status(300);
+          expect(res).to.have.status(200);
         });
         done();
       });
