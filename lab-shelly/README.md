@@ -1,31 +1,20 @@
 ![cf](https://i.imgur.com/7v5ASc8.png) lab-07-cowsay-http-server
 ======
 
-# To Submit this Assignment
-  * fork this repository
-  * write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-duncan`
-  * push to your repository
-  * submit a pull request to this repository
-  * submit a link to your PR in canvas
-  * write a question and observation on canvas
+# Cowsay - What does the cow say?
 
-# Build Tool Instructions
-* add a package.json
-* add a eslintrc
-* add a gitignore
-* add a readme with project description
-* include any npm scripts for starting server, linting, testing, etc
-* test your code
-  * ensure that all of your methods have test coverage
-  * write tests which start your server, send and receive, and confirm functionality
+# Use Cowsay to make GET and POST requests and have it say what you want.  
 
 # Directions
-* Create a HTTP Server using the http module
-* create a parse body module that is used for all POST request
+* Clone this repository
+* Download dependencies
+* Run server
+```
+node server.js
+```
 
 ## Server Endpoints
-### /
-for all request to `/` the server should respond with the following:
+### Users can use GET and POST requests. For all request to `/` the server should respond with the following:
  * a header containing `Content-Type: text/plain`
  * a status code of **200**
  * a response with the string "hello world"
@@ -49,6 +38,3 @@ for all request to `/` the server should respond with the following:
 * if the json`{text: message}`is **not** set in the body, respond with:  
  * status code = 400
  * a body including the value returned from `cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'})`
-
-## Bonus
-* **2pts** - add the ability to change the cow-file, **aka: dragon, sheep, etc** using a query string
